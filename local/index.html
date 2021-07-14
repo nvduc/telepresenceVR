@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+  vim: set sts=2 sw=2 et :
+
+
+  Demo Javascript app for negotiating and streaming a sendrecv webrtc stream
+  with a GStreamer app. Runs only in passive mode, i.e., responds to offers
+  with answers, exchanges ICE candidates, and streams.
+
+  Author: Nirbheek Chauhan <nirbheek@centricular.com>
+-->
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <style>
+      .error { color: red; }
+    </style>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="webrtc.js"></script>
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+    <script>
+      window.onload = websocketServerConnect;
+    </script>
+      <script>
+      function display_c(){
+        var refresh=100; // Refresh rate in milli seconds
+        mytime=setTimeout('display_ct()',refresh)
+      }
+      function display_ct(){
+      var dt = new Date() - new Date(0);
+      document.getElementById('date-time').innerHTML=dt;
+      display_c();
+      }
+      </script>
+  </head>
+
+  <body>
+    <!-- <div><video id="stream" autoplay playsinline>Your browser doesn't support video</video></div> -->
+    <div>Status: <span id="status">unknown</span></div>
+    <div><textarea id="text" cols=40 rows=4></textarea></div>
+    <div>Our id is <b id="peer-id">unknown</b></div>
+    <div>  <h1 style="font-size:2vw;"> Current Time: <span id='date-time'></span>.</h1></div>
+    <br/>
+    <div>
+      <div>getUserMedia constraints being used:</div>
+      <div><textarea id="constraints" cols=40 rows=4></textarea></div>
+    </div>
+    <a-scene>
+    <a-assets>
+      <video id="stream" autoplay loop crossorigin="anonymous" playsinline webkit-playsinline></video>
+      <video id="videoBunny" preload="auto"
+               src="https://cdn.aframe.io/videos/bunny.mp4"
+               width="160" height="90" autoplay loop="true"
+               crossOrigin="anonymous" muted></video>
+    </a-assets>
+    <a-videosphere src="#stream" rotation="0 180 0"
+      play-on-window-click
+    >
+    </a-videosphere>
+
+    <a-camera user-height="0" wasd-controls-enabled="false" arrow-key-rotation>
+      <!-- Text element for display messaging.  Hide once video is playing. -->
+      <a-entity id="msg" position="0 -0.3 -1.5" text="align:center; 
+              width:3;
+              wrapCount:100;
+              color: #FF8080;
+              value:Please click window to start 360 video streaming."
+              hide-once-playing="#stream">
+      </a-entity>
+    </a-camera>   
+
+    </a-scene>
+  </body>
+
+</html>

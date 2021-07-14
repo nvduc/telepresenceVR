@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+  vim: set sts=2 sw=2 et :
+
+
+  Demo Javascript app for negotiating and streaming a sendrecv webrtc stream
+  with a GStreamer app. Runs only in passive mode, i.e., responds to offers
+  with answers, exchanges ICE candidates, and streams.
+
+  Author: Nirbheek Chauhan <nirbheek@centricular.com>
+-->
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <style>
+      .error { color: red; }
+    </style>
+      <script>
+      function display_c(){
+        var refresh=100; // Refresh rate in milli seconds
+        mytime=setTimeout('display_ct()',refresh)
+      }
+      function display_ct(){
+      var dt = new Date() - new Date(0);
+      document.getElementById('date-time').innerHTML=dt;
+      display_c();
+      }
+      </script>
+  </head>
+
+  <body onload="display_ct();">
+    <!-- <div><video id="stream" autoplay playsinline>Your browser doesn't support video</video></div> -->
+    <div>  <h1 style="font-size:2vw;"> Current Time: <span id='date-time'></span></h1></div>
+  </body>
+
+</html>
