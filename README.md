@@ -39,5 +39,6 @@ Change the default ip adress at line 323 of file ``signalling\simple_server.py``
 cd telepresence_VR\signalling
 python simple_server.py
 ``
+
 Open Google Chrome on the remote agent, then go to: https://websocket-server-ip-address:8443 and accept self-signed certificates for this site. Do the same thing on the local agent.
 
