@@ -1,4 +1,4 @@
-# Telepresence System for Remote Participant
+# Telepresence System for Remote Learning
 
 ## Overview
 
@@ -30,14 +30,44 @@ Download and install ``Google Chrome`` browser.
 
 ### 3. Install required softwares for local agent
 Connect HTC Vive Pro headset to the computer.
-Download and install ``Google Chrome`` browser.
+Download and install ``Google Chrome`` browser. Other browsers that support WebRTC are also OK.
 
-### 4. Start servers (on the remote agent)
-Change the default ip adress at line 323 of file ``signalling\simple_server.py`` to the ip address of the remote agent, then start the WebSocket server:
+### 4. Start signalling servers (on the remote agent)
 
-``cd telepresence_VR\signalling``
+Change the default ip adress at line 323 of file ``signalling/simple_server.py`` to the ip address of the remote agent, then start the WebSocket server using the following commands (``command prompts``):
 
-``python simple_server.py``
+```
+cd telepresence_VR/signalling
+python simple_server.py
+```
+
+Accept self-signed certificates of the signalling server.
 
 Open Google Chrome on the remote agent, then go to: https://websocket-server-ip-address:8443 and accept self-signed certificates for this site. Do the same thing on the local agent.
+
+### 5. Start remote agent
+Open a command prompt, then excecute the following commands:
+```
+cd telepresence_VR/remote
+node app.js
+```
+Open Google Chrome and go to: https://remote-agent-ip-address:3000
+When accessing the site for the first time, you will need to accept self-signed certificates as with the websocket server.
+On the remote agent page, click on // and select Ricoh Theta V as the input video source. For the audio source, you can simply use your headphone.
+Click on // to start the remote agent.
+
+### 6. Start local agent
+Open a command prompt, then execute the following commands:
+```
+cd telepresence/local
+node app.js
+```
+Open Google Chrome and go to: https://remote-agent-ip-address:5000
+When accessing the site for the first time, you will need to accept self-signed certificates as with the websocket server.
+
+You will see the video from the remote agent being display on Google Chrome. To view it using the VR headset, just select the Desktop mode and go to Google Chrome.
+
+
+
+
 
