@@ -51,10 +51,10 @@ Open a command prompt, then excecute the following commands:
 cd telepresence_VR/remote
 node app.js
 ```
-Open Google Chrome and go to: https://remote-agent-ip-address:3000
+Open Google Chrome and go to: https://remote-agent-ip-address:3000/pc.html
 When accessing the site for the first time, you will need to accept self-signed certificates as with the websocket server.
-On the remote agent page, click on // and select Ricoh Theta V as the input video source. For the audio source, you can simply use your headphone.
-Click on // to start the remote agent.
+On the remote agent page, click on ``Get Device`` and select Ricoh Theta V as the input video source. For the audio source, you can simply use your headphone.
+Click on ``myConnect`` to start the remote agent.
 
 ### 6. Start local agent
 Open a command prompt, then execute the following commands:
